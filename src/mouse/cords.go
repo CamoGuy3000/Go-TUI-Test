@@ -1,4 +1,4 @@
-package main
+package mouse
 
 // A simple program that opens the alternate screen buffer and displays mouse
 // coordinates and events.
@@ -9,7 +9,7 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 )
 
-func main() {
+func RunCords() {
 	p := tea.NewProgram(model{}, tea.WithMouseAllMotion())
 	if _, err := p.Run(); err != nil {
 		log.Fatal(err)

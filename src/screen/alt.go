@@ -1,4 +1,4 @@
-package main
+package screen
 
 import (
 	"fmt"
@@ -7,6 +7,13 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/muesli/termenv"
 )
+
+func RunAlt() {
+	if _, err := tea.NewProgram(model{}).Run(); err != nil {
+		fmt.Println("Error running program:", err)
+		os.Exit(1)
+	}
+}
 
 var (
 	color   = termenv.EnvColorProfile().Color
@@ -65,9 +72,3 @@ func (m model) View() string {
 		help("  space: switch modes • q: exit\n")
 }
 
-func main() {
-	if _, err := tea.NewProgram(model{}).Run(); err != nil {
-		fmt.Println("Error running program:", err)
-		os.Exit(1)
-	}
-}
