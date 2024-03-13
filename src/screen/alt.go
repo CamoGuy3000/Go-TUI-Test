@@ -9,7 +9,7 @@ import (
 )
 
 func RunAlt() {
-	if _, err := tea.NewProgram(model{}).Run(); err != nil {
+	if _, err := tea.NewProgram(altmodel{}).Run(); err != nil {
 		fmt.Println("Error running program:", err)
 		os.Exit(1)
 	}
@@ -21,16 +21,16 @@ var (
 	help    = termenv.Style{}.Foreground(color("241")).Styled
 )
 
-type model struct {
+type altmodel struct {
 	altscreen bool
 	quitting  bool
 }
 
-func (m model) Init() tea.Cmd {
+func (m altmodel) Init() tea.Cmd {
 	return nil
 }
 
-func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
+func (m altmodel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
 	case tea.KeyMsg:
 		switch msg.String() {
@@ -51,7 +51,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	return m, nil
 }
 
-func (m model) View() string {
+func (m altmodel) View() string {
 	if m.quitting {
 		return "Bye!\n"
 	}
