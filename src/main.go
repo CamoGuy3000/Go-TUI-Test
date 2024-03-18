@@ -6,6 +6,7 @@ import (
 
 	"github.com/CamoGuy3000/mouse"
 	"github.com/CamoGuy3000/screen"
+	"github.com/CamoGuy3000/settings"
 	tea "github.com/charmbracelet/bubbletea"
 )
 
@@ -22,11 +23,13 @@ func initModel() model {
 		choices: []string{
 			"Mouse coords",
 		  "Toggle fullscreen",
-			"Button"},
+			"Button",
+			"Settings"},
 		programs: []func(){
 			mouse.RunCords,
 			screen.RunAlt,
 			screen.RunButton,
+			settings.RunSettings,
 		},
 		selector: 0,
 	}
